@@ -39,4 +39,36 @@ const siteImages = defineCollection({
   }),
 });
 
-export const collections = { events, testimonials, siteImages };
+const homeText = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/home' }),
+  schema: z.object({
+    hero: z.object({
+      eyebrowIt: z.string(), eyebrowEn: z.string(),
+      titleIt: z.string(), titleEn: z.string(),
+      subIt: z.string(), subEn: z.string(),
+      ctaPrimaryIt: z.string(), ctaPrimaryEn: z.string(),
+      ctaSecondaryIt: z.string(), ctaSecondaryEn: z.string(),
+    }),
+    whatWeDo: z.object({
+      eyebrowIt: z.string(), eyebrowEn: z.string(),
+      titleIt: z.string(), titleEn: z.string(),
+      leadIt: z.string(), leadEn: z.string(),
+      bodyIt: z.string(), bodyEn: z.string(),
+      linkTextIt: z.string(), linkTextEn: z.string(),
+    }),
+    testimonials: z.object({
+      eyebrowIt: z.string(), eyebrowEn: z.string(),
+      titleIt: z.string(), titleEn: z.string(),
+    }),
+    newsletter: z.object({
+      eyebrowIt: z.string(), eyebrowEn: z.string(),
+      titleIt: z.string(), titleEn: z.string(),
+      bodyIt: z.string(), bodyEn: z.string(),
+      emailPlaceholderIt: z.string(), emailPlaceholderEn: z.string(),
+      buttonIt: z.string(), buttonEn: z.string(),
+      noteIt: z.string(), noteEn: z.string(),
+    }),
+  }),
+});
+
+export const collections = { events, testimonials, siteImages, homeText };

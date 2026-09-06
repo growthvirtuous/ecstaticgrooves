@@ -6,6 +6,8 @@ const PLACEHOLDER = "url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fww
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 const testimonials = await getCollection('testimonials');
+const homeEntry = await getEntry('homeText', 'text');
+const home = homeEntry.data;
 ---
 <Base title="Ecstatic Grooves — Danza consapevole a Bologna">
 <div class="hero">
@@ -14,12 +16,12 @@ const testimonials = await getCollection('testimonials');
     </video>
     <div class="hero-scrim"></div>
     <div class="hero-inner">
-      <p class="eyebrow" data-it="Ecstatic Dance · Bologna" data-en="Ecstatic Dance · Bologna">Ecstatic Dance · Bologna</p>
-      <h1 data-it="Pensa meno, <span class='serif-i'>balla di più.</span>" data-en="Think less, <span class='serif-i'>dance more.</span>">Pensa meno, <span class="serif-i">balla di più.</span></h1>
-      <p class="sub" data-it="Non serve saper ballare: arriva come sei e riparti più leggerə ed energicə. Un sabato sera al mese a Bologna, uno spazio sicuro per spegnere la mente e muoverti esattamente come ti senti. Vieni da solə o porta degli amici, qui sono tuttə benvenutə." data-en="You don't need to know how to dance, arrive as you are and leave lighter and energised. One Saturday evening a month in Bologna, a safe space to switch off your mind and move exactly how you feel. Come alone or bring friends, everyone's welcome here.">Non serve saper ballare: arriva come sei e riparti più leggerə ed energicə. Un sabato sera al mese a Bologna, uno spazio sicuro per spegnere la mente e muoverti esattamente come ti senti. Vieni da solə o porta degli amici, qui sono tuttə benvenutə.</p>
+      <p class="eyebrow" data-it={home.hero.eyebrowIt} data-en={home.hero.eyebrowEn}>{home.hero.eyebrowIt}</p>
+      <h1 data-it={home.hero.titleIt} data-en={home.hero.titleEn} set:html={home.hero.titleIt}></h1>
+      <p class="sub" data-it={home.hero.subIt} data-en={home.hero.subEn}>{home.hero.subIt}</p>
       <div class="hero-cta">
-        <a class="btn btn-solid" href="/eventi" data-it="Biglietti" data-en="Get tickets">Biglietti</a>
-        <a class="btn btn-ghost hero-ghost" href="/esperienza" data-it="È la tua prima volta?" data-en="First time here?">È la tua prima volta?</a>
+        <a class="btn btn-solid" href="/eventi" data-it={home.hero.ctaPrimaryIt} data-en={home.hero.ctaPrimaryEn}>{home.hero.ctaPrimaryIt}</a>
+        <a class="btn btn-ghost hero-ghost" href="/esperienza" data-it={home.hero.ctaSecondaryIt} data-en={home.hero.ctaSecondaryEn}>{home.hero.ctaSecondaryIt}</a>
       </div>
     </div>
   </div>
@@ -27,11 +29,11 @@ const testimonials = await getCollection('testimonials');
   <section class="block">
     <div class="wrap two-col">
       <div>
-        <p class="eyebrow" data-it="Cosa facciamo" data-en="What we do">Cosa facciamo</p>
-        <h2 data-it="Più di una semplice danza" data-en="More than just a dance">Più di una semplice danza</h2>
-        <p class="lead" style="margin:.5em 0 1em" data-it="I nostri eventi sono concepiti come un santuario per l'autoespressione e l'esplorazione attraverso il movimento. È un viaggio di scoperta di sé e di connessione con la comunità." data-en="Our events are designed as a sanctuary for self-expression and exploration through movement. It's a journey of self-discovery and communal connection.">I nostri eventi sono concepiti come un santuario per l'autoespressione e l'esplorazione attraverso il movimento. È un viaggio di scoperta di sé e di connessione con la comunità.</p>
-        <p style="color:var(--ink-soft)" data-it="Creiamo spazi sicuri e inclusivi dove le persone di ogni provenienza possono tornare a sé stesse attraverso musica e movimento — dove l'autenticità è benvenuta e la danza diventa un cammino di espressione, cura e gioia condivisa." data-en="We create safe, inclusive spaces where people from all backgrounds can return to themselves through music and movement — where authenticity is welcome, and dance becomes a path to healing, expression, and shared joy.">Creiamo spazi sicuri e inclusivi dove le persone di ogni provenienza possono tornare a sé stesse attraverso musica e movimento — dove l'autenticità è benvenuta e la danza diventa un cammino di espressione, cura e gioia condivisa.</p>
-        <a class="btn btn-ghost" style="margin-top:26px" href="/chi-siamo" data-it="La nostra storia" data-en="Our story">La nostra storia</a>
+        <p class="eyebrow" data-it={home.whatWeDo.eyebrowIt} data-en={home.whatWeDo.eyebrowEn}>{home.whatWeDo.eyebrowIt}</p>
+        <h2 data-it={home.whatWeDo.titleIt} data-en={home.whatWeDo.titleEn}>{home.whatWeDo.titleIt}</h2>
+        <p class="lead" style="margin:.5em 0 1em" data-it={home.whatWeDo.leadIt} data-en={home.whatWeDo.leadEn}>{home.whatWeDo.leadIt}</p>
+        <p style="color:var(--ink-soft)" data-it={home.whatWeDo.bodyIt} data-en={home.whatWeDo.bodyEn}>{home.whatWeDo.bodyIt}</p>
+        <a class="btn btn-ghost" style="margin-top:26px" href="/chi-siamo" data-it={home.whatWeDo.linkTextIt} data-en={home.whatWeDo.linkTextEn}>{home.whatWeDo.linkTextIt}</a>
       </div>
       <div class="photo tall" style={`background-image:${images.data.homeStory ? `url('${images.data.homeStory}')` : PLACEHOLDER};background-size:cover;background-position:center`}></div>
     </div>
@@ -40,8 +42,8 @@ const testimonials = await getCollection('testimonials');
   <section class="block-2 alt">
     <div class="wrap">
       <div class="section-head" style="max-width:none">
-        <p class="eyebrow" data-it="Le voci della comunità" data-en="From our community">Le voci della comunità</p>
-        <h2 data-it="Come ci si sente" data-en="How it feels">Come ci si sente</h2>
+        <p class="eyebrow" data-it={home.testimonials.eyebrowIt} data-en={home.testimonials.eyebrowEn}>{home.testimonials.eyebrowIt}</p>
+        <h2 data-it={home.testimonials.titleIt} data-en={home.testimonials.titleEn}>{home.testimonials.titleIt}</h2>
       </div>
       <div class="carousel-wrap">
         <button class="car-btn car-prev" id="tPrev" aria-label="Precedenti">&#8592;</button>
@@ -58,11 +60,11 @@ const testimonials = await getCollection('testimonials');
   <section class="block">
     <div class="wrap">
       <div class="callout">
-        <p class="eyebrow" data-it="Resta nel cerchio" data-en="Stay in the circle">Resta nel cerchio</p>
-        <h2 data-it="Iscriviti alla newsletter" data-en="Join our newsletter">Iscriviti alla newsletter</h2>
-        <p data-it="Ricevi aggiornamenti sui prossimi eventi e sul percorso di crescita della nostra comunità. Una volta al mese, niente rumore." data-en="Updates about our upcoming events and the growth journey of our community. Once a month, no noise.">Ricevi aggiornamenti sui prossimi eventi e sul percorso di crescita della nostra comunità. Una volta al mese, niente rumore.</p>
-        <div class="news"><input type="email" data-it-ph="La tua email" data-en-ph="Your email" placeholder="La tua email" aria-label="Email"><button class="btn btn-solid" onclick="fakeSub(this)" data-it="Iscriviti" data-en="Subscribe">Iscriviti</button></div>
-        <p class="note" data-it="Form dimostrativo — da collegare a MailerLite / Buttondown." data-en="Demo form — connect to MailerLite / Buttondown.">Form dimostrativo — da collegare a MailerLite / Buttondown.</p>
+        <p class="eyebrow" data-it={home.newsletter.eyebrowIt} data-en={home.newsletter.eyebrowEn}>{home.newsletter.eyebrowIt}</p>
+        <h2 data-it={home.newsletter.titleIt} data-en={home.newsletter.titleEn}>{home.newsletter.titleIt}</h2>
+        <p data-it={home.newsletter.bodyIt} data-en={home.newsletter.bodyEn}>{home.newsletter.bodyIt}</p>
+        <div class="news"><input type="email" data-it-ph={home.newsletter.emailPlaceholderIt} data-en-ph={home.newsletter.emailPlaceholderEn} placeholder={home.newsletter.emailPlaceholderIt} aria-label="Email"><button class="btn btn-solid" onclick="fakeSub(this)" data-it={home.newsletter.buttonIt} data-en={home.newsletter.buttonEn}>{home.newsletter.buttonIt}</button></div>
+        <p class="note" data-it={home.newsletter.noteIt} data-en={home.newsletter.noteEn}>{home.newsletter.noteIt}</p>
       </div>
     </div>
   </section>

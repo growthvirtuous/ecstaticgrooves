@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "eyebrowIt": "Ecstatic Dance · Bologna",
+    "eyebrowEn": "Ecstatic Dance · Bologna",
+    "titleIt": "Pensa meno, <span class='serif-i'>balla di più.</span>",
+    "titleEn": "Think less, <span class='serif-i'>dance more.</span>",
+    "subIt": "Non serve saper ballare: arriva come sei e riparti più leggerə ed energicə. Un sabato sera al mese a Bologna, uno spazio sicuro per spegnere la mente e muoverti esattamente come ti senti. Vieni da solə o porta degli amici, qui sono tuttə benvenutə.",
+    "subEn": "You don't need to know how to dance, arrive as you are and leave lighter and energised. One Saturday evening a month in Bologna, a safe space to switch off your mind and move exactly how you feel. Come alone or bring friends, everyone's welcome here.",
+    "ctaPrimaryIt": "Biglietti",
+    "ctaPrimaryEn": "Get tickets",
+    "ctaSecondaryIt": "È la tua prima volta?",
+    "ctaSecondaryEn": "First time here?"
+  },
+  "whatWeDo": {
+    "eyebrowIt": "Cosa facciamo",
+    "eyebrowEn": "What we do",
+    "titleIt": "Più di una semplice danza",
+    "titleEn": "More than just a dance",
+    "leadIt": "I nostri eventi sono concepiti come un santuario per l'autoespressione e l'esplorazione attraverso il movimento. È un viaggio di scoperta di sé e di connessione con la comunità.",
+    "leadEn": "Our events are designed as a sanctuary for self-expression and exploration through movement. It's a journey of self-discovery and communal connection.",
+    "bodyIt": "Creiamo spazi sicuri e inclusivi dove le persone di ogni provenienza possono tornare a sé stesse attraverso musica e movimento — dove l'autenticità è benvenuta e la danza diventa un cammino di espressione, cura e gioia condivisa.",
+    "bodyEn": "We create safe, inclusive spaces where people from all backgrounds can return to themselves through music and movement — where authenticity is welcome, and dance becomes a path to healing, expression, and shared joy.",
+    "linkTextIt": "La nostra storia",
+    "linkTextEn": "Our story"
+  },
+  "testimonials": {
+    "eyebrowIt": "Le voci della comunità",
+    "eyebrowEn": "From our community",
+    "titleIt": "Come ci si sente",
+    "titleEn": "How it feels"
+  },
+  "newsletter": {
+    "eyebrowIt": "Resta nel cerchio",
+    "eyebrowEn": "Stay in the circle",
+    "titleIt": "Iscriviti alla newsletter",
+    "titleEn": "Join our newsletter",
+    "bodyIt": "Ricevi aggiornamenti sui prossimi eventi e sul percorso di crescita della nostra comunità. Una volta al mese, niente rumore.",
+    "bodyEn": "Updates about our upcoming events and the growth journey of our community. Once a month, no noise.",
+    "emailPlaceholderIt": "La tua email",
+    "emailPlaceholderEn": "Your email",
+    "buttonIt": "Iscriviti",
+    "buttonEn": "Subscribe",
+    "noteIt": "Form dimostrativo — da collegare a MailerLite / Buttondown.",
+    "noteEn": "Demo form — connect to MailerLite / Buttondown."
+  }
+}
