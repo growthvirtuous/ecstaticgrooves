@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "astro": "^7.3.1"
+    "astro": "^7.3.1",
+    "tinacms": "^3.12.1",
+    "@tinacms/cli": "^2.6.1"
   },
   "type": "module"
 }

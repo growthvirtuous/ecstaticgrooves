@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare(b.id));
 ---
 <Base title="Eventi — Ecstatic Grooves" description="Il calendario della stagione e la nostra casa a Bologna, OfficinAcrobatica.">
 <section class="block" style="padding-top:150px">
@@ -7,26 +9,13 @@ import Base from '../layouts/Base.astro';
       <div class="section-head"><p class="eyebrow" data-it="Unisciti a noi" data-en="Join us">Unisciti a noi</p><h2 data-it="Il calendario della stagione" data-en="The season's calendar">Il calendario della stagione</h2><p class="lead" data-it="Ci incontriamo un sabato sera al mese a Bologna, e le nostre serate seguono il ritmo delle stagioni e delle loro energie. Scegli la tua data e prenota il posto." data-en="We gather one Saturday evening a month in Bologna, and our evenings follow the rhythm of the seasons and their energies. Pick your date and book your spot.">Ci incontriamo un sabato sera al mese a Bologna, e le nostre serate seguono il ritmo delle stagioni e delle loro energie. Scegli la tua data e prenota il posto.</p></div>
 
       <div class="cal">
-        <div class="cal-row">
-          <div class="cal-date"><span class="d">19</span><span class="m">Sab · Set</span></div>
-          <div class="cal-info"><h3 data-it="Rising Harvest Moon" data-en="Rising Harvest Moon">Rising Harvest Moon</h3><p class="when">OfficinAcrobatica, DLF — Bologna</p></div>
-          <a class="btn btn-solid" href="https://www.tickettailor.com/checkout/view-event/id/8890835/chk/8a84c7dd0bebed556229f52b3b08ff86/?ref=website_widget&entry_link=%2Fall-tickets%2Fecstaticgrooves%2F%3Fref%3Dwebsite_widget%26show_date_filter%3Dtrue%26show_search_filter%3Dtrue%26show_sort%3Dtrue&show_search_filter=true&show_date_filter=true&show_sort=true#top" target="_blank" rel="noopener" data-it="Prenota" data-en="Book">Prenota</a>
-        </div>
-        <div class="cal-row">
-          <div class="cal-date"><span class="d">10</span><span class="m">Sab · Ott</span></div>
-          <div class="cal-info"><h3 data-it="New Moon" data-en="New Moon">New Moon</h3><p class="when">OfficinAcrobatica, DLF — Bologna</p></div>
-          <a class="btn btn-solid" href="https://www.tickettailor.com/checkout/view-event/id/8890836/chk/f88311ed091d3da878e3bf276f421a4e/?ref=website_widget&entry_link=%2Fall-tickets%2Fecstaticgrooves%2F%3Fref%3Dwebsite_widget%26show_date_filter%3Dtrue%26show_search_filter%3Dtrue%26show_sort%3Dtrue&show_search_filter=true&show_date_filter=true&show_sort=true#top" target="_blank" rel="noopener" data-it="Prenota" data-en="Book">Prenota</a>
-        </div>
-        <div class="cal-row">
-          <div class="cal-date"><span class="d">14</span><span class="m">Sab · Nov</span></div>
-          <div class="cal-info"><h3 data-it="Full Moon" data-en="Full Moon">Full Moon</h3><p class="when">OfficinAcrobatica, DLF — Bologna</p></div>
-          <a class="btn btn-solid" href="https://www.tickettailor.com/checkout/view-event/id/8890837/chk/73899d8fe083c4ef2847099e8cd89184/?ref=website_widget&entry_link=%2Fall-tickets%2Fecstaticgrooves%2F%3Fref%3Dwebsite_widget%26show_date_filter%3Dtrue%26show_search_filter%3Dtrue%26show_sort%3Dtrue&show_search_filter=true&show_date_filter=true&show_sort=true#top" target="_blank" rel="noopener" data-it="Prenota" data-en="Book">Prenota</a>
-        </div>
-        <div class="cal-row">
-          <div class="cal-date"><span class="d">19</span><span class="m">Sab · Dic</span></div>
-          <div class="cal-info"><h3 data-it="Winter Solstice" data-en="Winter Solstice">Winter Solstice</h3><p class="when">OfficinAcrobatica, DLF — Bologna</p></div>
-          <a class="btn btn-solid" href="https://www.tickettailor.com/checkout/view-event/id/8890838/chk/bdd5042c264ff19d406d8cb618c346ce/?ref=website_widget&entry_link=%2Fall-tickets%2Fecstaticgrooves%2F%3Fref%3Dwebsite_widget%26show_date_filter%3Dtrue%26show_search_filter%3Dtrue%26show_sort%3Dtrue&show_search_filter=true&show_date_filter=true&show_sort=true#top" target="_blank" rel="noopener" data-it="Prenota" data-en="Book">Prenota</a>
-        </div>
+        {events.map((event) => (
+          <div class="cal-row">
+            <div class="cal-date"><span class="d">{event.data.day}</span><span class="m">{event.data.monthLabel}</span></div>
+            <div class="cal-info"><h3 data-it={event.data.titleIt} data-en={event.data.titleEn}>{event.data.titleIt}</h3><p class="when">{event.data.venue}</p></div>
+            <a class="btn btn-solid" href={event.data.ticketUrl} target="_blank" rel="noopener" data-it="Prenota" data-en="Book">Prenota</a>
+          </div>
+        ))}
       </div>
       <p class="meta" style="text-align:center;margin-top:22px" data-it="Ogni «Prenota» porta diretto al checkout di quella serata. Orario e tema di ciascun evento sono indicati nella sua pagina." data-en="Each “Book” goes straight to that night’s checkout. Time and theme for each event are shown on its page.">Ogni «Prenota» porta diretto al checkout di quella serata. Orario e tema di ciascun evento sono indicati nella sua pagina.</p>
 
