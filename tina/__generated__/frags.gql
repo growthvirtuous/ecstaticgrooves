@@ -1,0 +1,83 @@
+fragment EventParts on Event {
+  __typename
+  day
+  monthLabel
+  titleIt
+  titleEn
+  venue
+  ticketUrl
+}
+
+fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  author
+  rating
+}
+
+fragment SiteImagesParts on SiteImages {
+  __typename
+  heroPoster
+  homeStory
+  experienceBody
+  experienceMusic
+  aboutStory
+  aboutEarthpercentBadge
+  eventsLocation
+  eventsFirstTime
+  blogCoverPillar
+  blogCoverHome
+  blogCoverPlanet
+}
+
+fragment HomeTextParts on HomeText {
+  __typename
+  hero {
+    __typename
+    eyebrowIt
+    eyebrowEn
+    titleIt
+    titleEn
+    subIt
+    subEn
+    ctaPrimaryIt
+    ctaPrimaryEn
+    ctaSecondaryIt
+    ctaSecondaryEn
+  }
+  whatWeDo {
+    __typename
+    eyebrowIt
+    eyebrowEn
+    titleIt
+    titleEn
+    leadIt
+    leadEn
+    bodyIt
+    bodyEn
+    linkTextIt
+    linkTextEn
+  }
+  testimonials {
+    __typename
+    eyebrowIt
+    eyebrowEn
+    titleIt
+    titleEn
+  }
+  newsletter {
+    __typename
+    eyebrowIt
+    eyebrowEn
+    titleIt
+    titleEn
+    bodyIt
+    bodyEn
+    emailPlaceholderIt
+    emailPlaceholderEn
+    buttonIt
+    buttonEn
+    noteIt
+    noteEn
+  }
+}
