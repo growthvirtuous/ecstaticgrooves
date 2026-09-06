@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description = "Eventi di Ecstatic Dance e Danza Consapevole a Bologna — uno spazio sicuro per l'espressione autentica e la crescita in una comunità olistica." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ecstatic Grooves" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+<ClientRouter fallback="animate" />
+</head>
+<body>
+<Nav />
+<main>
+<slot />
+</main>
+<Footer />
+<div id="music-player" class="music-player" transition:persist>
+  <button class="mp-toggle" id="mpToggle" aria-expanded="false">
+    <span class="mp-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span data-it="Balla sulle nostre onde precedenti" data-en="Dance to our previous waves">Balla sulle nostre onde precedenti</span>
+    <span class="mp-chevron" aria-hidden="true">&#9650;</span>
+  </button>
+  <div class="mp-panel" id="mpPanel">
+    <iframe
+      title="SoundCloud — Holly Fontanelli"
+      width="100%"
+      height="300"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      loading="lazy"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/holly-hotpants/ecstatic-grooves-live&color=%235F1CEC&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+    ></iframe>
+    <a class="mp-profile-link" href="https://soundcloud.com/holly-hotpants" target="_blank" rel="noopener" data-it="Vedi il profilo su SoundCloud" data-en="View profile on SoundCloud">Vedi il profilo su SoundCloud</a>
+  </div>
+</div>
+<script src="https://w.soundcloud.com/player/api.js" is:inline></script>
+<script is:inline>
+  function egInit(){
+    document.documentElement.lang = document.documentElement.lang || 'it';
+    (function(){try{var s=localStorage.getItem('eg-lang');if(s&&s!=='it')window.setLang(s);}catch(e){}})();
+    var navEl=document.getElementById('nav');
+    function updateNav(){var hero=!!document.querySelector('.hero');var top=window.scrollY<=40;var ht=hero&&top;navEl.classList.toggle('hero-top',ht);navEl.classList.toggle('scrolled',!ht);}
+    if(navEl){window.addEventListener('scroll',updateNav);updateNav();}
+    var bg=document.getElementById('burger');
+    if(bg && !bg.dataset.wired){bg.dataset.wired='1';bg.addEventListener('click',function(){document.getElementById('navlinks').classList.toggle('open');});}
+    document.querySelectorAll('.fq').forEach(function(q){
+      if(q.dataset.wired) return; q.dataset.wired='1';
+      q.addEventListener('click',function(){var i=q.parentElement,a=i.querySelector('.fa'),open=i.classList.contains('open');i.classList.toggle('open');a.style.maxHeight=open?null:a.scrollHeight+'px';});
+    });
+  }
+  function setLang(l){
+    document.documentElement.lang=l;
+    try{localStorage.setItem('eg-lang',l)}catch(e){}
+    document.querySelectorAll('[data-it]').forEach(function(el){var v=el.getAttribute('data-'+l);if(v!==null)el.innerHTML=v;});
+    document.querySelectorAll('[data-it-ph]').forEach(function(el){var v=el.getAttribute('data-'+l+'-ph');if(v!==null)el.setAttribute('placeholder',v);});
+    var it=document.getElementById('it'),en=document.getElementById('en');
+    if(it)it.classList.toggle('on',l==='it'); if(en)en.classList.toggle('on',l==='en');
+  }
+  function sh(t){var u=encodeURIComponent(location.href);var m={wa:'https://wa.me/?text='+u,fb:'https://www.facebook.com/sharer/sharer.php?u='+u,li:'https://www.linkedin.com/sharing/share-offsite/?url='+u};window.open(m[t],'_blank','noopener');return false;}
+  function copyLink(b){var l=document.documentElement.lang;if(navigator.clipboard)navigator.clipboard.writeText(location.href);var o=b.textContent;b.textContent=l==='en'?'Copied ✓':'Copiato ✓';setTimeout(function(){b.textContent=o;},1500);}
+  function fakeSub(b){var w=b.closest('.news')||b.closest('.pre-foot-form'),i=w.querySelector('input');if(!i.value){i.focus();return;}var l=document.documentElement.lang;b.textContent=l==='en'?'Done ✓':'Fatto ✓';i.value='';setTimeout(function(){b.textContent=l==='en'?'Subscribe':'Iscriviti';},1600);}
+  window.setLang=setLang;window.sh=sh;window.copyLink=copyLink;window.fakeSub=fakeSub;
+  document.addEventListener('astro:page-load', egInit);
+
+  // Mini-player: wired once, persists across soft navigations via transition:persist
+  (function(){
+    var toggle=document.getElementById('mpToggle'), panel=document.getElementById('mpPanel'), player=document.getElementById('music-player');
+    if(!toggle || toggle.dataset.wired) return;
+    toggle.dataset.wired='1';
+    var scWidget=null, scReady=false, scPendingPlay=false;
+    function ensureWidget(){
+      if(scWidget) return scWidget;
+      var iframe=panel.querySelector('iframe');
+      if(iframe && window.SC && window.SC.Widget){
+        scWidget=SC.Widget(iframe);
+        scWidget.bind(SC.Widget.Events.READY, function(){
+          scReady=true;
+          if(scPendingPlay){ scWidget.play(); scPendingPlay=false; }
+        });
+      }
+      return scWidget;
+    }
+    function openAndPlay(){
+      player.classList.add('open');
+      toggle.setAttribute('aria-expanded','true');
+      var w=ensureWidget();
+      if(w){ if(scReady){ w.play(); } else { scPendingPlay=true; } }
+    }
+    toggle.addEventListener('click',function(){
+      var willOpen = !player.classList.contains('open');
+      if(willOpen){ openAndPlay(); }
+      else {
+        player.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+        if(scReady && scWidget) scWidget.pause(); else scPendingPlay=false;
+      }
+    });
+    window.openMusicPlayer=function(){
+      openAndPlay();
+      player.scrollIntoView({behavior:'smooth', block:'end'});
+    };
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+---
+import { getEntry } from 'astro:content';
+const imagesEntry = await getEntry('siteImages', 'images');
+const images = imagesEntry;
+const PLACEHOLDER = "url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%20500%22%20preserveAspectRatio%3D%22xMidYMid%20slice%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%238248E8%22%2F%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%235F1CEC%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23241046%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22400%22%20height%3D%22500%22%20fill%3D%22url%28%2523g%29%22%2F%3E%3Cg%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.20%22%20stroke-width%3D%222%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M-20%20360%20C120%20290%20210%20420%20430%20320%22%2F%3E%3Cpath%20d%3D%22M-20%20410%20C140%20350%20250%20470%20430%20390%22%2F%3E%3Cpath%20d%3D%22M-20%20300%20C120%20250%20210%20350%20430%20260%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.15%22%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%22180%22%20r%3D%2230%22%2F%3E%3Cpath%20d%3D%22M205%20212%20C182%20232%20188%20300%20172%20350%20L196%20350%20C205%20316%20212%20316%20220%20350%20L244%20350%20C230%20300%20236%20232%20205%20212%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'),linear-gradient(140deg,#CDB4E8,#9B6FD8 55%,#5F1CEC)";
+import Base from '../layouts/Base.astro';
+---
+<Base title="Chi siamo — Ecstatic Grooves" description="Holly e Felippe, la nostra storia e la famiglia Dance The Medicine.">
+<section class="block" style="padding-top:150px">
+    <div class="wrap two-col">
+      <div>
+        <p class="eyebrow" data-it="La nostra storia" data-en="Our story">La nostra storia</p>
+        <h2 data-it="Siamo Holly e Felippe" data-en="We're Holly and Felippe">Siamo Holly e Felippe</h2>
+        <p class="lead" style="margin:.5em 0 1em" data-it="I nostri percorsi ci hanno portato attraverso Brasile, Regno Unito e Italia, plasmati dalla musica, dall'immersione culturale e dalla crescita interiore." data-en="Our paths have taken us across Brazil, the UK, and Italy, shaped by music, cultural immersion, and inner growth.">I nostri percorsi ci hanno portato attraverso Brasile, Regno Unito e Italia, plasmati dalla musica, dall'immersione culturale e dalla crescita interiore.</p>
+        <p style="color:var(--ink-soft)" data-it="La nostra esperienza e la nostra formazione condivise hanno ispirato Ecstatic Grooves: uno spazio nato dal nostro impegno per il movimento consapevole e per una comunità olistica, centrata sul cuore." data-en="Our shared experience and training inspired Ecstatic Grooves — a space born from our commitment to conscious movement and a heart-centered, holistic community.">La nostra esperienza e la nostra formazione condivise hanno ispirato Ecstatic Grooves: uno spazio nato dal nostro impegno per il movimento consapevole e per una comunità olistica, centrata sul cuore.</p>
+      </div>
+      <div class="photo tall" style={`background-image:${images.data.aboutStory ? `url('${images.data.aboutStory}')` : PLACEHOLDER};background-size:cover;background-position:center`}></div>
+    </div>
+  </section>
+
+  <section class="block-2 alt">
+    <div class="wrap founders">
+      <div class="founder">
+        <h3>Holly Johnsen Fontanelli</h3>
+        <p class="role" data-it="Facilitazione musicale" data-en="Musical facilitation">Facilitazione musicale</p>
+        <p data-it="A Holly piace creare i suoi set in modo intuitivo, connettendosi con gli elementi e con la natura attraverso musica e paesaggi sonori. Aspettati l'inaspettato! Nell'Ecstatic Dance ama suonare global bass, organic house, folkronic, ambient e neo classical. Ama anche intrecciare le sue radici celtiche in ogni suo set. Cresciuta nel Galles del Sud e influenzata dalla scena elettronica britannica, ha iniziato a mixare vinili a 15 anni, formandosi poi in produzione musicale e ingegneria del suono a Londra. Il suo decennio in Brasile ha approfondito il legame con la musica cerimoniale e con gli spazi di cura guidati dalla comunità. È certificata da Dance The Medicine, dove ha affinato la capacità di guidare viaggi musicali emotivi e ondulati." data-en="Holly enjoys creating her sets intuitively, connecting with the elements and nature through music and soundscapes. Expect the unexpected! In ecstatic dance she loves playing global bass, organic house, folkronic, ambient and neo classical. She also enjoys weaving her Celtic roots into all her sets. Raised in South Wales and influenced by the UK electronic scene, she began mixing vinyl at 15, later training in music production and audio engineering in London. Her decade in Brazil deepened her connection to ceremonial music and community-led healing spaces. She is certified with Dance The Medicine, where she refined her ability to guide emotional and wave-like musical journeys.">A Holly piace creare i suoi set in modo intuitivo, connettendosi con gli elementi e con la natura attraverso musica e paesaggi sonori. Aspettati l'inaspettato! Nell'Ecstatic Dance ama suonare global bass, organic house, folkronic, ambient e neo classical. Ama anche intrecciare le sue radici celtiche in ogni suo set. Cresciuta nel Galles del Sud e influenzata dalla scena elettronica britannica, ha iniziato a mixare vinili a 15 anni, formandosi poi in produzione musicale e ingegneria del suono a Londra. Il suo decennio in Brasile ha approfondito il legame con la musica cerimoniale e con gli spazi di cura guidati dalla comunità. È certificata da Dance The Medicine, dove ha affinato la capacità di guidare viaggi musicali emotivi e ondulati.</p>
+      </div>
+      <div class="founder">
+        <h3>Felippe Fontanelli</h3>
+        <p class="role" data-it="Facilitatore" data-en="Facilitator">Facilitatore</p>
+        <p data-it="Nato in Brasile e cresciuto in Italia, Felippe porta una presenza radicata e visionaria, plasmata da anni di esperienza imprenditoriale e trasformazione personale, tra spiritualità, pratiche somatiche e movimento consapevole. È facilitatore certificato di Ecstatic Dance Livello 2 con Dance The Medicine, dedito a creare esperienze incarnate che nutrono l'intelligenza emotiva, l'equilibrio interiore e la connessione autentica." data-en="Born in Brazil and raised in Italy, Felippe brings a grounded and visionary presence shaped by years of entrepreneurial experience and personal transformation, spanning spirituality, somatic practices, and conscious movement. He is a certified Level 2 Ecstatic Dance facilitator with Dance The Medicine, devoted to creating embodied experiences that nurture emotional intelligence, inner balance, and authentic connection.">Nato in Brasile e cresciuto in Italia, Felippe porta una presenza radicata e visionaria, plasmata da anni di esperienza imprenditoriale e trasformazione personale, tra spiritualità, pratiche somatiche e movimento consapevole. È facilitatore certificato di Ecstatic Dance Livello 2 con Dance The Medicine, dedito a creare esperienze incarnate che nutrono l'intelligenza emotiva, l'equilibrio interiore e la connessione autentica.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap" style="text-align:center;max-width:640px">
+      <p class="eyebrow" data-it="Una comunità globale" data-en="A global community">Una comunità globale</p>
+      <h2 data-it="Parte della famiglia Dance The Medicine" data-en="Part of the Dance The Medicine family">Parte della famiglia Dance The Medicine</h2>
+      <img src="/logos/dance-the-medicine.jpeg" alt="Dance The Medicine" style="width:76px;height:76px;border-radius:50%;margin:18px auto 4px;display:block;object-fit:cover" />
+      <p style="color:var(--ink-soft);margin:.6em 0 1.4em" data-it="Siamo orgogliosi di far parte della famiglia Dance The Medicine (DTM): una comunità internazionale di facilitatori, DJ e organizzatori di danza consapevole, dedicata a portare struttura, inclusività e integrità agli eventi di Ecstatic Dance in tutto il mondo." data-en="We are proud to be part of the Dance The Medicine (DTM) family — an international community of conscious dance facilitators, DJs, and event organizers dedicated to bringing structure, inclusivity, and integrity to Ecstatic Dance events worldwide.">Siamo orgogliosi di far parte della famiglia Dance The Medicine (DTM): una comunità internazionale di facilitatori, DJ e organizzatori di danza consapevole, dedicata a portare struttura, inclusività e integrità agli eventi di Ecstatic Dance in tutto il mondo.</p>
+      <a class="btn btn-ghost" href="https://www.dancethemedicine.com/trainings" target="_blank" rel="noopener" data-it="Scopri i corsi DTM" data-en="Discover DTM trainings">Scopri i corsi DTM</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap" style="text-align:center;max-width:640px">
+      <p class="eyebrow" data-it="Una rete italiana" data-en="An Italian network">Una rete italiana</p>
+      <h2 data-it="Parte di Ecstatic Dance Italy" data-en="Part of Ecstatic Dance Italy">Parte di Ecstatic Dance Italy</h2>
+      <img src="/logos/ecstatic-dance-italy.jpg" alt="Ecstatic Dance Italy" style="max-width:280px;width:100%;border-radius:16px;margin:18px auto 4px;display:block" />
+      <p style="color:var(--ink-soft);margin:.6em 0 1.4em" data-it="Facciamo parte anche della rete Ecstatic Dance Italy: una comunità di organizzatori che, dal 2015, porta la danza consapevole in tante città italiane, da Torino a Trieste, da Milano a Firenze, da Genova a Roma, fino alle Langhe. Da quest'anno rappresentiamo Bologna all'interno della rete." data-en="We're also part of the Ecstatic Dance Italy network: a community of organisers who, since 2015, have been bringing conscious dance to cities across Italy, from Turin to Trieste, from Milan to Florence, from Genoa to Rome, and the Langhe hills. As of this year, we represent Bologna within the network.">Facciamo parte anche della rete Ecstatic Dance Italy: una comunità di organizzatori che, dal 2015, porta la danza consapevole in tante città italiane, da Torino a Trieste, da Milano a Firenze, da Genova a Roma, fino alle Langhe. Da quest'anno rappresentiamo Bologna all'interno della rete.</p>
+    </div>
+  </section>
+
+  <section class="block-2 alt">
+    <div class="wrap" style="text-align:center;max-width:640px">
+      <p class="eyebrow" data-it="Restituire" data-en="Giving back">Restituire</p>
+      <h2 data-it="Danziamo anche per il pianeta" data-en="We dance for the planet, too">Danziamo anche per il pianeta</h2>
+      <div class="photo" style={`width:240px;aspect-ratio:1/1;border-radius:20px;margin:26px auto 8px;box-shadow:0 18px 40px -18px rgba(36,28,43,.35);background-image:${images.data.aboutEarthpercentBadge ? `url('${images.data.aboutEarthpercentBadge}')` : PLACEHOLDER};background-size:contain;background-position:center;background-repeat:no-repeat`}></div>
+      <p style="color:var(--ink-soft);margin:1.2em 0 1.4em" data-it="Il 5% di ogni biglietto va a EarthPercent, la fondazione per il clima e la natura dell'industria musicale, co-fondata da Brian Eno. È il nostro modo di far sì che l'energia che creiamo in pista sostenga anche un'azione concreta per il pianeta." data-en="5% of every ticket goes to EarthPercent, the music industry's climate and nature foundation, co-founded by Brian Eno. It's our way of making sure the energy we create on the dance floor supports real action for the planet too.">Il 5% di ogni biglietto va a EarthPercent, la fondazione per il clima e la natura dell'industria musicale, co-fondata da Brian Eno. È il nostro modo di far sì che l'energia che creiamo in pista sostenga anche un'azione concreta per il pianeta.</p>
+      <a class="btn btn-ghost" href="/blog/dancing-for-the-planet" data-it="Scopri di più sul blog" data-en="Learn more on our blog">Scopri di più sul blog</a>
+    </div>
+  </section>
+</Base>
