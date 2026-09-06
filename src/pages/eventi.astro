@@ -26,7 +26,7 @@ const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare
       <div class="loc-card">
         <p class="eyebrow" data-it="La nostra casa" data-en="Our home">La nostra casa</p>
         <h3 data-it="OfficinAcrobatica, Bologna" data-en="OfficinAcrobatica, Bologna">OfficinAcrobatica, Bologna</h3>
-        <div class="photo" style={`aspect-ratio:16/9;border-radius:14px;margin:16px 0 4px;background-image:${images.data.eventsLocation ? `url('${images.data.eventsLocation}')` : PLACEHOLDER};background-size:cover;background-position:center`}><span class="lbl">Foto: OfficinAcrobatica</span></div>
+        <div class="photo" style={`aspect-ratio:16/9;border-radius:14px;margin:16px 0 4px;background-image:${images.data.eventsLocation ? `url('${images.data.eventsLocation}')` : PLACEHOLDER};background-size:cover;background-position:center`}></div>
         <p class="loc-intro" data-it="Ci troviamo a OfficinAcrobatica, la nostra casa nel cuore di Bologna: un hub creativo pieno di vita e movimento, dentro il DLF in Via Stalingrado 12 (40128). Ampio, accogliente e facile da raggiungere." data-en="We gather at OfficinAcrobatica, our home in the heart of Bologna: a creative hub full of life and movement, inside the DLF at Via Stalingrado 12 (40128). Spacious, warm and easy to reach.">Ci troviamo a OfficinAcrobatica, la nostra casa nel cuore di Bologna: un hub creativo pieno di vita e movimento, dentro il DLF in Via Stalingrado 12 (40128). Ampio, accogliente e facile da raggiungere.</p>
         <p class="loc-label" data-it="Come arrivare" data-en="How to get there">Come arrivare</p>
         <ul class="loc-how">
@@ -39,7 +39,7 @@ const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare
       </div>
 
       <div class="two-col" style="margin-top:64px">
-        <div class="photo tall" style={`background-image:${images.data.eventsFirstTime ? `url('${images.data.eventsFirstTime}')` : PLACEHOLDER};background-size:cover;background-position:center`}><span class="lbl">Foto: la sala / il luogo</span></div>
+        <div class="photo tall" style={`background-image:${images.data.eventsFirstTime ? `url('${images.data.eventsFirstTime}')` : PLACEHOLDER};background-size:cover;background-position:center`}></div>
         <div>
           <p class="eyebrow" data-it="Buono a sapersi" data-en="Good to know">Buono a sapersi</p>
           <h3 style="font-size:1.8rem;margin:.3em 0 .5em" data-it="Un viaggio che sale come un'onda" data-en="A journey that rises like a wave">Un viaggio che sale come un'onda</h3>
