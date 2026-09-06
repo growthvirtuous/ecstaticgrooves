@@ -43,10 +43,14 @@ const testimonials = await getCollection('testimonials');
         <p class="eyebrow" data-it="Le voci della comunità" data-en="From our community">Le voci della comunità</p>
         <h2 data-it="Come ci si sente" data-en="How it feels">Come ci si sente</h2>
       </div>
-      <div class="tgrid">
-        {testimonials.map((t) => (
-          <div class="t"><div class="stars">{"★".repeat(t.data.rating || 5)}{"☆".repeat(5 - (t.data.rating || 5))}</div><p>&ldquo;{t.data.quote}&rdquo;</p><div class="who">{t.data.author}</div></div>
-        ))}
+      <div class="carousel-wrap">
+        <button class="car-btn car-prev" id="tPrev" aria-label="Precedenti">&#8592;</button>
+        <div class="carousel" id="tCarousel">
+          {testimonials.map((t) => (
+            <div class="t"><div class="stars">{"★".repeat(t.data.rating || 5)}{"☆".repeat(5 - (t.data.rating || 5))}</div><p>&ldquo;{t.data.quote}&rdquo;</p><div class="who">{t.data.author}</div></div>
+          ))}
+        </div>
+        <button class="car-btn car-next" id="tNext" aria-label="Successive">&#8594;</button>
       </div>
     </div>
   </section>
@@ -63,3 +67,49 @@ const testimonials = await getCollection('testimonials');
     </div>
   </section>
 </Base>
+
+<script>
+  const car = document.getElementById('tCarousel');
+  const prev = document.getElementById('tPrev');
+  const next = document.getElementById('tNext');
+  function cardStep() {
+    const card = car?.querySelector('.t');
+    if (!card) return 0;
+    const style = getComputedStyle(car);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  }
+  function atEnd() {
+    if (!car) return true;
+    return car.scrollLeft + car.clientWidth >= car.scrollWidth - 4;
+  }
+  function advance() {
+    if (!car) return;
+    if (atEnd()) {
+      car.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      car.scrollBy({ left: cardStep(), behavior: 'smooth' });
+    }
+  }
+  function goPrev() {
+    if (!car) return;
+    if (car.scrollLeft <= 4) {
+      car.scrollTo({ left: car.scrollWidth, behavior: 'smooth' });
+    } else {
+      car.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    }
+  }
+  next?.addEventListener('click', () => { advance(); resetAutoplay(); });
+  prev?.addEventListener('click', () => { goPrev(); resetAutoplay(); });
+
+  let autoplayTimer;
+  function startAutoplay() { autoplayTimer = setInterval(advance, 5000); }
+  function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
+  if (car && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    startAutoplay();
+    car.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+    car.addEventListener('mouseleave', startAutoplay);
+    car.addEventListener('touchstart', () => clearInterval(autoplayTimer), { passive: true });
+    car.addEventListener('touchend', () => setTimeout(startAutoplay, 3000));
+  }
+</script>
