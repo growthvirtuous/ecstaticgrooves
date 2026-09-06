@@ -1,0 +1,18 @@
+---
+const path = Astro.url.pathname;
+const active = (p) => (p === '/' ? path === '/' : path.startsWith(p));
+---
+<nav id="nav">
+  <a class="logo-link" href="/" aria-label="Ecstatic Grooves"><img class="logo" src="/logo.svg" alt="Ecstatic Grooves" /></a>
+  <div class="nav-links" id="navlinks">
+    <a class:list={["navlink", {active: active('/')}]} href="/" data-it="Home" data-en="Home">Home</a>
+    <a class:list={["navlink", {active: active('/esperienza')}]} href="/esperienza" data-it="L'esperienza" data-en="The experience">L'esperienza</a>
+    <a class:list={["navlink", {active: active('/chi-siamo')}]} href="/chi-siamo" data-it="Chi siamo" data-en="About">Chi siamo</a>
+    <a class:list={["navlink", {active: active('/blog')}]} href="/blog" data-it="Blog" data-en="Blog">Blog</a>
+    <a class="btn btn-solid btn-ticket-nav" href="/eventi" data-it="I nostri eventi" data-en="Our events">I nostri eventi</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang"><button id="it" class="on" onclick="setLang('it')">IT</button><span class="sep">/</span><button id="en" onclick="setLang('en')">EN</button></div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
