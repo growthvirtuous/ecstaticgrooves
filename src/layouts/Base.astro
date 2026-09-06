@@ -82,18 +82,24 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
     var toggle=document.getElementById('mpToggle'), panel=document.getElementById('mpPanel'), player=document.getElementById('music-player');
     if(!toggle || toggle.dataset.wired) return;
     toggle.dataset.wired='1';
-    var scWidget=null;
-    function getWidget(){
+    var scWidget=null, scReady=false, scPendingPlay=false;
+    function ensureWidget(){
       if(scWidget) return scWidget;
       var iframe=panel.querySelector('iframe');
-      if(iframe && window.SC && window.SC.Widget){ scWidget=SC.Widget(iframe); }
+      if(iframe && window.SC && window.SC.Widget){
+        scWidget=SC.Widget(iframe);
+        scWidget.bind(SC.Widget.Events.READY, function(){
+          scReady=true;
+          if(scPendingPlay){ scWidget.play(); scPendingPlay=false; }
+        });
+      }
       return scWidget;
     }
     function openAndPlay(){
       player.classList.add('open');
       toggle.setAttribute('aria-expanded','true');
-      var w=getWidget();
-      if(w) w.play();
+      var w=ensureWidget();
+      if(w){ if(scReady){ w.play(); } else { scPendingPlay=true; } }
     }
     toggle.addEventListener('click',function(){
       var willOpen = !player.classList.contains('open');
@@ -101,7 +107,7 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
       else {
         player.classList.remove('open');
         toggle.setAttribute('aria-expanded','false');
-        var w=getWidget(); if(w) w.pause();
+        if(scReady && scWidget) scWidget.pause(); else scPendingPlay=false;
       }
     });
     window.openMusicPlayer=function(){

@@ -4,10 +4,16 @@
     <p class="pre-foot-quote" data-it="Entra nel cerchio quando sei prontə. Nessuna fretta, solo movimento." data-en="Join the circle whenever you're ready. No rush, just movement.">Entra nel cerchio quando sei prontə. Nessuna fretta, solo movimento.</p>
     <div class="pre-foot-actions">
       <a class="btn btn-solid" href="/eventi" data-it="I prossimi appuntamenti" data-en="Upcoming dates">I prossimi appuntamenti</a>
-      <div class="pre-foot-form">
-        <input type="email" data-it-ph="La tua email" data-en-ph="Your email" placeholder="La tua email" aria-label="Email">
-        <button class="btn btn-ghost pre-foot-btn-ghost" onclick="fakeSub(this)" data-it="Iscriviti" data-en="Subscribe">Iscriviti</button>
-      </div>
+      <form class="pre-foot-form" action="https://app.kit.com/forms/9888747/subscriptions" method="post" target="_blank">
+        <div class="pre-foot-form-row">
+          <input type="email" name="email_address" required data-it-ph="La tua email" data-en-ph="Your email" placeholder="La tua email" aria-label="Email">
+          <button type="submit" class="btn btn-ghost pre-foot-btn-ghost" data-it="Iscriviti" data-en="Subscribe">Iscriviti</button>
+        </div>
+        <label class="pre-foot-consent">
+          <input type="checkbox" required>
+          <span data-it="Acconsento a ricevere la newsletter e al trattamento dei miei dati secondo la <a href='/privacy' target='_blank' rel='noopener'>Informativa Privacy</a>." data-en="I agree to receive the newsletter and to the processing of my data as described in the <a href='/privacy' target='_blank' rel='noopener'>Privacy Policy</a>.">Acconsento a ricevere la newsletter e al trattamento dei miei dati secondo la <a href='/privacy' target='_blank' rel='noopener'>Informativa Privacy</a>.</span>
+        </label>
+      </form>
     </div>
   </div>
 </div>
@@ -21,7 +27,7 @@
       <div class="fcols">
         <div class="fcol"><h4 data-it="Esplora" data-en="Explore">Esplora</h4><a href="/esperienza" data-it="L'esperienza" data-en="The experience">L'esperienza</a><a href="/chi-siamo" data-it="Chi siamo" data-en="About">Chi siamo</a><a href="/blog" data-it="Blog" data-en="Blog">Blog</a><a href="/eventi" data-it="Eventi" data-en="Events">Eventi</a></div>
         <div class="fcol"><h4 data-it="Vieni con noi" data-en="Connect">Vieni con noi</h4><a href="https://buytickets.at/ecstaticgrooves" target="_blank" rel="noopener" data-it="Biglietti" data-en="Tickets">Biglietti</a><a href="https://www.instagram.com/ecstaticgrooves" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/204188562782313" target="_blank" rel="noopener">Facebook</a><a href="https://chat.whatsapp.com/Lr8PYGL62K3A3P9Z3Cf3yE" target="_blank" rel="noopener" data-it="Community WhatsApp" data-en="WhatsApp Community">Community WhatsApp</a><a href="#" target="_blank" rel="noopener">SoundCloud</a></div>
-        <div class="fcol"><h4 data-it="Scrivici" data-en="Say hello">Scrivici</h4><a href="mailto:dance@ecstaticgrooves.com">dance@ecstaticgrooves.com</a></div>
+        <div class="fcol"><h4 data-it="Scrivici" data-en="Say hello">Scrivici</h4><a href="mailto:dance@ecstaticgrooves.com">dance@ecstaticgrooves.com</a><a href="/privacy" data-it="Informativa Privacy" data-en="Privacy Policy">Informativa Privacy</a></div>
       </div>
     </div>
     <div class="fbot"><span>© 2026 Ecstatic Grooves · Bologna</span><span data-it="Bozza — versione finale chiara" data-en="Draft — final light version">Bozza — versione finale chiara</span></div>
