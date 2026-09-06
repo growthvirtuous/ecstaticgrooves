@@ -1,0 +1,31 @@
+fragment EventParts on Event {
+  __typename
+  day
+  monthLabel
+  titleIt
+  titleEn
+  venue
+  ticketUrl
+}
+
+fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  author
+  rating
+}
+
+fragment SiteImagesParts on SiteImages {
+  __typename
+  heroPoster
+  homeStory
+  experienceBody
+  experienceMusic
+  aboutStory
+  aboutEarthpercentBadge
+  eventsLocation
+  eventsFirstTime
+  blogCoverPillar
+  blogCoverHome
+  blogCoverPlanet
+}
