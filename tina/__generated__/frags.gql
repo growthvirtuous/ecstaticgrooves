@@ -1,0 +1,15 @@
+fragment EventParts on Event {
+  __typename
+  day
+  monthLabel
+  titleIt
+  titleEn
+  venue
+  ticketUrl
+}
+
+fragment TestimonialParts on Testimonial {
+  __typename
+  quote
+  author
+}
