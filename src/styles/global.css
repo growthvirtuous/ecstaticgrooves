@@ -172,6 +172,11 @@
   .share span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
   .share a,.share button{font-family:inherit;font-size:.85rem;font-weight:600;padding:9px 16px;border-radius:100px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
   .share a:hover,.share button:hover{border-color:var(--berry);color:var(--berry)}
+  .next-article{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:20px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;text-decoration:none;transition:border-color .2s,transform .2s var(--ease)}
+  .next-article:hover{border-color:var(--berry);transform:translateY(-2px)}
+  .next-label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .next-title{font-family:"Fraunces",serif;font-size:1.15rem;color:var(--ink)}
+  @media(max-width:600px){.next-article{flex-direction:column;align-items:flex-start;gap:4px}}
 
   .pre-foot{background:var(--ink);color:var(--paper);padding:56px 0}
   .pre-foot-inner{text-align:center;max-width:640px;margin:0 auto}
@@ -181,8 +186,8 @@
   .pre-foot-form input{padding:13px 18px;border-radius:100px;border:1px solid rgba(251,249,245,.25);background:rgba(255,255,255,.06);color:var(--paper);font-family:inherit;font-size:.92rem;min-width:200px}
   .pre-foot-form input::placeholder{color:rgba(251,249,245,.5)}
   .pre-foot-form input:focus{outline:none;border-color:#C9B0F5}
-  .pre-foot-btn-ghost{border-color:rgba(251,249,245,.3);color:var(--paper)}
-  .pre-foot-btn-ghost:hover{border-color:var(--paper)}
+  .pre-foot-btn-ghost{border-color:#C9B0F5;color:#C9B0F5}
+  .pre-foot-btn-ghost:hover{border-color:var(--paper);color:var(--paper)}
   footer{background:var(--paper-2);padding:60px 0 36px;border-top:1px solid var(--line)}
   .foot{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
   .foot-tag{font-family:"Fraunces",serif;font-style:italic;font-size:1.1rem;max-width:24ch}
@@ -205,5 +210,25 @@
     .pre-foot-form{width:100%;justify-content:center}
     .pre-foot-form input{flex:1;min-width:0}
   }
+  .music-player{position:fixed;right:20px;bottom:20px;z-index:80;max-width:340px;width:calc(100% - 40px)}
+  .mp-toggle{display:flex;align-items:center;gap:10px;width:100%;padding:14px 18px;border:none;border-radius:100px;background:var(--ink);color:var(--paper);font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 12px 30px -10px rgba(36,28,43,.4);transition:border-radius .25s var(--ease)}
+  .music-player.open .mp-toggle{border-radius:20px 20px 0 0}
+  .mp-eq{display:inline-flex;align-items:flex-end;gap:3px;height:14px;flex:none}
+  .mp-eq i{display:block;width:3px;border-radius:2px;background:#C9B0F5;animation:mp-bounce 1.1s ease-in-out infinite}
+  .mp-eq i:nth-child(1){height:5px;animation-delay:-0.9s}
+  .mp-eq i:nth-child(2){height:12px;animation-delay:-0.6s}
+  .mp-eq i:nth-child(3){height:8px;animation-delay:-0.3s}
+  .mp-eq i:nth-child(4){height:14px;animation-delay:0s}
+  @keyframes mp-bounce{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+  .mp-toggle span:nth-child(2){flex:1;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mp-chevron{font-size:.6rem;opacity:.7;transition:transform .25s}
+  .music-player.open .mp-chevron{transform:rotate(180deg)}
+  .mp-panel{max-height:0;overflow:hidden;background:#fff;border-radius:0 0 16px 16px;box-shadow:0 12px 30px -10px rgba(36,28,43,.4);transition:max-height .3s var(--ease)}
+  .music-player.open .mp-panel{max-height:380px}
+  .mp-panel iframe{display:block;border:none}
+  .mp-profile-link{display:block;text-align:center;padding:10px;font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none}
+  .mp-profile-link:hover{color:var(--berry)}
+  @media(max-width:600px){.music-player{left:16px;right:16px;bottom:16px;max-width:none;width:auto}}
+  @media(prefers-reduced-motion:reduce){.mp-eq i{animation:none;transform:scaleY(.7)}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page.active{animation:none}}
   :focus-visible{outline:2px solid var(--berry);outline-offset:3px;border-radius:4px}

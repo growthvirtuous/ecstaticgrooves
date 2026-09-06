@@ -59,47 +59,49 @@ const home = homeEntry.data;
 </Base>
 
 <script>
-  const car = document.getElementById('tCarousel');
-  const prev = document.getElementById('tPrev');
-  const next = document.getElementById('tNext');
-  function cardStep() {
-    const card = car?.querySelector('.t');
-    if (!card) return 0;
-    const style = getComputedStyle(car);
-    const gap = parseFloat(style.columnGap || style.gap || '0');
-    return card.getBoundingClientRect().width + gap;
-  }
-  function atEnd() {
-    if (!car) return true;
-    return car.scrollLeft + car.clientWidth >= car.scrollWidth - 4;
-  }
-  function advance() {
-    if (!car) return;
-    if (atEnd()) {
-      car.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      car.scrollBy({ left: cardStep(), behavior: 'smooth' });
+  function initHomeCarousel() {
+    const car = document.getElementById('tCarousel');
+    if (!car || car.dataset.wired) return;
+    car.dataset.wired = '1';
+    const prev = document.getElementById('tPrev');
+    const next = document.getElementById('tNext');
+    function cardStep() {
+      const card = car.querySelector('.t');
+      if (!card) return 0;
+      const style = getComputedStyle(car);
+      const gap = parseFloat(style.columnGap || style.gap || '0');
+      return card.getBoundingClientRect().width + gap;
     }
-  }
-  function goPrev() {
-    if (!car) return;
-    if (car.scrollLeft <= 4) {
-      car.scrollTo({ left: car.scrollWidth, behavior: 'smooth' });
-    } else {
-      car.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+    function atEnd() {
+      return car.scrollLeft + car.clientWidth >= car.scrollWidth - 4;
     }
-  }
-  next?.addEventListener('click', () => { advance(); resetAutoplay(); });
-  prev?.addEventListener('click', () => { goPrev(); resetAutoplay(); });
+    function advance() {
+      if (atEnd()) {
+        car.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        car.scrollBy({ left: cardStep(), behavior: 'smooth' });
+      }
+    }
+    function goPrev() {
+      if (car.scrollLeft <= 4) {
+        car.scrollTo({ left: car.scrollWidth, behavior: 'smooth' });
+      } else {
+        car.scrollBy({ left: -cardStep(), behavior: 'smooth' });
+      }
+    }
+    next?.addEventListener('click', () => { advance(); resetAutoplay(); });
+    prev?.addEventListener('click', () => { goPrev(); resetAutoplay(); });
 
-  let autoplayTimer;
-  function startAutoplay() { autoplayTimer = setInterval(advance, 5000); }
-  function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
-  if (car && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    startAutoplay();
-    car.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
-    car.addEventListener('mouseleave', startAutoplay);
-    car.addEventListener('touchstart', () => clearInterval(autoplayTimer), { passive: true });
-    car.addEventListener('touchend', () => setTimeout(startAutoplay, 3000));
+    function startAutoplay() { window.__egCarouselTimer = setInterval(advance, 5000); }
+    function resetAutoplay() { clearInterval(window.__egCarouselTimer); startAutoplay(); }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      startAutoplay();
+      car.addEventListener('mouseenter', () => clearInterval(window.__egCarouselTimer));
+      car.addEventListener('mouseleave', startAutoplay);
+      car.addEventListener('touchstart', () => clearInterval(window.__egCarouselTimer), { passive: true });
+      car.addEventListener('touchend', () => setTimeout(startAutoplay, 3000));
+    }
   }
+  clearInterval(window.__egCarouselTimer);
+  document.addEventListener('astro:page-load', initHomeCarousel);
 </script>
