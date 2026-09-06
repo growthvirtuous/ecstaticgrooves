@@ -31,7 +31,7 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
 <div id="music-player" class="music-player" transition:persist>
   <button class="mp-toggle" id="mpToggle" aria-expanded="false">
     <span class="mp-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <span data-it="Le nostre onde precedenti" data-en="Our previous waves">Le nostre onde precedenti</span>
+    <span data-it="Balla sulle nostre onde precedenti" data-en="Dance to our previous waves">Balla sulle nostre onde precedenti</span>
     <span class="mp-chevron" aria-hidden="true">&#9650;</span>
   </button>
   <div class="mp-panel" id="mpPanel">
@@ -48,6 +48,7 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
     <a class="mp-profile-link" href="https://soundcloud.com/holly-hotpants" target="_blank" rel="noopener" data-it="Vedi il profilo su SoundCloud" data-en="View profile on SoundCloud">Vedi il profilo su SoundCloud</a>
   </div>
 </div>
+<script src="https://w.soundcloud.com/player/api.js" is:inline></script>
 <script is:inline>
   function egInit(){
     document.documentElement.lang = document.documentElement.lang || 'it';
@@ -81,13 +82,30 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
     var toggle=document.getElementById('mpToggle'), panel=document.getElementById('mpPanel'), player=document.getElementById('music-player');
     if(!toggle || toggle.dataset.wired) return;
     toggle.dataset.wired='1';
-    toggle.addEventListener('click',function(){
-      var open=player.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true':'false');
-    });
-    window.openMusicPlayer=function(){
+    var scWidget=null;
+    function getWidget(){
+      if(scWidget) return scWidget;
+      var iframe=panel.querySelector('iframe');
+      if(iframe && window.SC && window.SC.Widget){ scWidget=SC.Widget(iframe); }
+      return scWidget;
+    }
+    function openAndPlay(){
       player.classList.add('open');
       toggle.setAttribute('aria-expanded','true');
+      var w=getWidget();
+      if(w) w.play();
+    }
+    toggle.addEventListener('click',function(){
+      var willOpen = !player.classList.contains('open');
+      if(willOpen){ openAndPlay(); }
+      else {
+        player.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+        var w=getWidget(); if(w) w.pause();
+      }
+    });
+    window.openMusicPlayer=function(){
+      openAndPlay();
       player.scrollIntoView({behavior:'smooth', block:'end'});
     };
   })();
