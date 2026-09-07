@@ -243,7 +243,13 @@
   .mp-panel iframe{display:block;border:none}
   .mp-profile-link{display:block;text-align:center;padding:10px;font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none}
   .mp-profile-link:hover{color:var(--berry)}
-  @media(max-width:600px){.music-player{left:16px;right:16px;bottom:16px;max-width:none;width:auto}}
+  .mp-mobile-link{display:none}
+  @media(max-width:600px){
+    .music-player{left:16px;right:16px;bottom:70px;max-width:none;width:auto}
+    .mp-iframe{display:none}
+    .mp-mobile-link{display:block;text-align:center;padding:16px;font-weight:600;color:var(--berry);text-decoration:none;font-size:.9rem}
+    .music-player.open .mp-panel{max-height:60px}
+  }
   @media(prefers-reduced-motion:reduce){.mp-eq i{animation:none;transform:scaleY(.7)}}
   .legal-body h2{font-family:"Fraunces",serif;font-weight:500;font-size:1.35rem;margin:1.8em 0 .5em;color:var(--ink)}
   .legal-body h2:first-child{margin-top:0}
