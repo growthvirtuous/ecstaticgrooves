@@ -1,2 +1,3 @@
 import { defineConfig } from 'astro/config';
-export default defineConfig({ site: 'https://ecstaticgrooves.com' });
+import sitemap from '@astrojs/sitemap';
+export default defineConfig({ site: 'https://ecstaticgrooves.com', integrations: [sitemap()] });

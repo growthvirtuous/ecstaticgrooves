@@ -12,9 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tinacms/cli": "^2.6.1",
     "astro": "^7.3.1",
-    "tinacms": "^3.12.1",
-    "@tinacms/cli": "^2.6.1"
+    "tinacms": "^3.12.1"
   },
   "type": "module"
 }
