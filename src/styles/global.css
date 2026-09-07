@@ -200,6 +200,10 @@
   .social-row{display:flex;gap:10px;margin-top:18px}
   .social-icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);color:var(--ink-soft);transition:border-color .2s,color .2s,background .2s}
   .social-icon svg{width:18px;height:18px}
+  .nav-follow{display:flex;align-items:center;gap:8px;margin-left:14px}
+  .nav-follow-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .nav-social-icon{width:30px;height:30px}
+  .nav-social-icon svg{width:14px;height:14px}
   .social-icon:hover{border-color:var(--berry);color:#fff;background:var(--berry)}
   .fcols{display:flex;gap:40px;flex-wrap:wrap}
   .fcol h4{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--berry);margin-bottom:12px;font-weight:600}
@@ -209,7 +213,7 @@
 
   @media(max-width:860px){
     .nav-links{position:fixed;inset:0 0 0 auto;width:min(82vw,320px);background:var(--paper);flex-direction:column;justify-content:center;gap:24px;padding:40px;transform:translateX(100%);transition:transform .35s var(--ease);box-shadow:-8px 0 30px rgba(36,28,43,.08)}
-    .nav-links.open{transform:none}.burger{display:flex}.btn-ticket-nav{display:none}
+    .nav-links.open{transform:none}.burger{display:flex}.btn-ticket-nav{display:none}.nav-follow{display:none}
     .hero{min-height:78vh}.hero-inner{padding:110px 24px 48px}
     .two-col,.founders{grid-template-columns:1fr;gap:34px}
     .grid-6,.phases,.blog-grid{grid-template-columns:1fr}
@@ -220,7 +224,7 @@
     .pre-foot-form input[type="email"]{max-width:none}
     .pre-foot-consent{text-align:left}
   }
-  .music-player{position:fixed;right:20px;bottom:20px;z-index:80;max-width:340px;width:calc(100% - 40px)}
+  .music-player{position:fixed;left:20px;bottom:20px;z-index:80;max-width:340px;width:calc(100% - 40px)}
   .mp-toggle{display:flex;align-items:center;gap:10px;width:100%;padding:14px 18px;border:none;border-radius:100px;background:var(--berry);color:#fff;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;box-shadow:0 14px 34px -8px rgba(95,28,236,.55);transition:border-radius .25s var(--ease),transform .2s var(--ease)}
   .mp-toggle:hover{transform:translateY(-2px)}
   .music-player.open .mp-toggle{border-radius:20px 20px 0 0}
