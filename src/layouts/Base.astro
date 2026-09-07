@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { ClientRouter } from 'astro:transitions';
-const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description = "Ecstatic Dance Bologna: eventi mensili di Ecstatic Dance e Danza Consapevole, uno spazio sicuro per l'espressione autentica e la crescita in una comunità olistica." } = Astro.props;
+const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description = "Ecstatic Dance Bologna: eventi mensili di Ecstatic Dance e Danza Consapevole, uno spazio sicuro per l'espressione autentica e la crescita in una comunità olistica.", ogDescription = description } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="it">
@@ -12,13 +12,14 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="icon" type="image/svg+xml" href="/logo.svg" />
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ecstatic Grooves" />
 <meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
+<meta property="og:description" content={ogDescription} />
 <meta property="og:image" content="https://ecstaticgrooves.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

@@ -193,7 +193,7 @@
   .pre-foot-consent span a:hover{color:var(--paper)}
   .pre-foot-form input::placeholder{color:rgba(251,249,245,.5)}
   .pre-foot-form input:focus{outline:none;border-color:#C9B0F5}
-  .pre-foot-btn-ghost{border-color:#C9B0F5;color:#C9B0F5}
+  .pre-foot-btn-ghost{border-color:var(--berry);color:var(--berry)}
   .pre-foot-btn-ghost:hover{border-color:var(--paper);color:var(--paper)}
   footer{background:var(--paper-2);padding:60px 0 36px;border-top:1px solid var(--line)}
   .foot{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
