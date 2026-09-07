@@ -51,7 +51,6 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
       scrolling="no"
       frameborder="no"
       allow="autoplay"
-      loading="lazy"
       src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/holly-hotpants/dj-holly-fontanelli-ecstatic&color=%235F1CEC&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
     ></iframe>
     <a class="mp-mobile-link" href="https://soundcloud.com/holly-hotpants/dj-holly-fontanelli-ecstatic" target="_blank" rel="noopener" data-it="▶ Ascolta su SoundCloud" data-en="▶ Listen on SoundCloud">▶ Ascolta su SoundCloud</a>
@@ -99,11 +98,18 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
         scWidget=SC.Widget(iframe);
         scWidget.bind(SC.Widget.Events.READY, function(){
           scReady=true;
-          if(scPendingPlay){ setTimeout(function(){ scWidget.play(); }, 250); scPendingPlay=false; }
+          if(scPendingPlay){ scWidget.play(); scPendingPlay=false; }
         });
       }
       return scWidget;
     }
+    // Eager init: create the widget as soon as the SC API is loaded, so READY
+    // fires before the first user click and play() runs inside that click's gesture.
+    (function initWidget(tries){
+      if(ensureWidget()) return;
+      if(tries<=0) return;
+      setTimeout(function(){ initWidget(tries-1); }, 200);
+    })(30);
     function openAndPlay(){
       player.classList.add('open');
       toggle.setAttribute('aria-expanded','true');
