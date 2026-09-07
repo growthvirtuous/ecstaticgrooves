@@ -239,7 +239,7 @@
   .mp-chevron{font-size:.6rem;opacity:.7;transition:transform .25s}
   .music-player.open .mp-chevron{transform:rotate(180deg)}
   .mp-panel{max-height:0;overflow:hidden;background:#fff;border-radius:0 0 16px 16px;box-shadow:0 12px 30px -10px rgba(36,28,43,.4);transition:max-height .3s var(--ease)}
-  .music-player.open .mp-panel{max-height:380px}
+  .music-player.open .mp-panel{max-height:150px}
   .mp-panel iframe{display:block;border:none}
   .mp-profile-link{display:block;text-align:center;padding:10px;font-size:.8rem;font-weight:600;color:var(--ink-soft);text-decoration:none}
   .mp-profile-link:hover{color:var(--berry)}
@@ -252,5 +252,12 @@
   .legal-body li{margin-bottom:.5em;color:#3a3242}
   .legal-body a{color:var(--berry);text-decoration:underline}
   .lang-note{margin-top:3em;padding-top:1.5em;border-top:1px solid var(--line);font-size:.85rem;font-style:italic;color:var(--ink-soft)}
+  .connections-sub{font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin:.3em 0 2.2em}
+  .connections-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;text-align:center}
+  .connection-item img,.connection-badge{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:block;object-fit:cover;background-size:contain;background-position:center;background-repeat:no-repeat}
+  .connection-name{font-weight:600;font-size:.95rem;margin:0 0 8px}
+  .connection-item p{color:var(--ink-soft);font-size:.88rem;line-height:1.55;margin:0 0 14px}
+  .connection-item .btn{font-size:.7rem;padding:9px 16px}
+  @media(max-width:760px){.connections-grid{grid-template-columns:1fr;gap:36px}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.page.active{animation:none}}
   :focus-visible{outline:2px solid var(--berry);outline-offset:3px;border-radius:4px}
