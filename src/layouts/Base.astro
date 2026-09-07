@@ -28,7 +28,7 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
-<ClientRouter fallback="animate" />
+<ClientRouter fallback="none" />
 </head>
 <body>
 <Nav />
@@ -99,7 +99,7 @@ const { title = 'Ecstatic Grooves — Danza consapevole a Bologna', description 
         scWidget=SC.Widget(iframe);
         scWidget.bind(SC.Widget.Events.READY, function(){
           scReady=true;
-          if(scPendingPlay){ scWidget.play(); scPendingPlay=false; }
+          if(scPendingPlay){ setTimeout(function(){ scWidget.play(); }, 250); scPendingPlay=false; }
         });
       }
       return scWidget;
