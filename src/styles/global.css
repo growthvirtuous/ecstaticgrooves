@@ -254,7 +254,7 @@
   .lang-note{margin-top:3em;padding-top:1.5em;border-top:1px solid var(--line);font-size:.85rem;font-style:italic;color:var(--ink-soft)}
   .connections-sub{font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft);margin:.3em 0 2.2em}
   .connections-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;text-align:center}
-  .connection-item img,.connection-badge{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:block;object-fit:cover;background-size:contain;background-position:center;background-repeat:no-repeat}
+  .connection-item img,.connection-badge{width:108px;height:108px;border-radius:50%;margin:0 auto 18px;display:block;object-fit:cover;background-size:contain;background-position:center;background-repeat:no-repeat;box-shadow:0 10px 24px -10px rgba(36,28,43,.3)}
   .connection-name{font-weight:600;font-size:.95rem;margin:0 0 8px}
   .connection-item p{color:var(--ink-soft);font-size:.88rem;line-height:1.55;margin:0 0 14px}
   .connection-item .btn{font-size:.7rem;padding:9px 16px}
