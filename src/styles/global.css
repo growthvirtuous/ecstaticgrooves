@@ -173,6 +173,8 @@
   .share span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
   .share a,.share button{font-family:inherit;font-size:.85rem;font-weight:600;padding:9px 16px;border-radius:100px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
   .share a:hover,.share button:hover{border-color:var(--berry);color:var(--berry)}
+  .share a{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px}
+  .share a svg{width:18px;height:18px;display:block}
   .next-article{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:20px;padding:20px 24px;border:1px solid var(--line);border-radius:16px;text-decoration:none;transition:border-color .2s,transform .2s var(--ease)}
   .next-article:hover{border-color:var(--berry);transform:translateY(-2px)}
   .next-label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
@@ -252,9 +254,17 @@
   .mp-mobile-link{display:none}
   @media(max-width:600px){
     .music-player{left:16px;right:16px;bottom:70px;max-width:none;width:auto}
+    .mp-toggle{padding:20px 24px;font-size:1.15rem;gap:14px}
+    .mp-eq{height:20px;gap:4px}
+    .mp-eq i{width:4px}
+    .mp-eq i:nth-child(1){height:7px}
+    .mp-eq i:nth-child(2){height:17px}
+    .mp-eq i:nth-child(3){height:11px}
+    .mp-eq i:nth-child(4){height:20px}
+    .mp-chevron{font-size:.85rem}
     .mp-iframe{display:none}
-    .mp-mobile-link{display:block;text-align:center;padding:16px;font-weight:600;color:var(--berry);text-decoration:none;font-size:.9rem}
-    .music-player.open .mp-panel{max-height:60px}
+    .mp-mobile-link{display:block;text-align:center;padding:22px;font-weight:600;color:var(--berry);text-decoration:none;font-size:1.25rem}
+    .music-player.open .mp-panel{max-height:90px}
   }
   @media(prefers-reduced-motion:reduce){.mp-eq i{animation:none;transform:scaleY(.7)}}
   .legal-body h2{font-family:"Fraunces",serif;font-weight:500;font-size:1.35rem;margin:1.8em 0 .5em;color:var(--ink)}
