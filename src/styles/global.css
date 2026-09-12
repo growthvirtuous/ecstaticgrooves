@@ -254,17 +254,9 @@
   .mp-mobile-link{display:none}
   @media(max-width:600px){
     .music-player{left:16px;right:16px;bottom:70px;max-width:none;width:auto}
-    .mp-toggle{padding:20px 24px;font-size:1.15rem;gap:14px}
-    .mp-eq{height:20px;gap:4px}
-    .mp-eq i{width:4px}
-    .mp-eq i:nth-child(1){height:7px}
-    .mp-eq i:nth-child(2){height:17px}
-    .mp-eq i:nth-child(3){height:11px}
-    .mp-eq i:nth-child(4){height:20px}
-    .mp-chevron{font-size:.85rem}
     .mp-iframe{display:none}
-    .mp-mobile-link{display:block;text-align:center;padding:22px;font-weight:600;color:var(--berry);text-decoration:none;font-size:1.25rem}
-    .music-player.open .mp-panel{max-height:90px}
+    .mp-mobile-link{display:block;text-align:center;padding:16px;font-weight:600;color:var(--berry);text-decoration:none;font-size:.9rem}
+    .music-player.open .mp-panel{max-height:60px}
   }
   @media(prefers-reduced-motion:reduce){.mp-eq i{animation:none;transform:scaleY(.7)}}
   .legal-body h2{font-family:"Fraunces",serif;font-weight:500;font-size:1.35rem;margin:1.8em 0 .5em;color:var(--ink)}
