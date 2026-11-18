@@ -63,7 +63,7 @@ export default defineConfig({
           allowedActions: { create: false, delete: false },
         },
         fields: [
-          { type: "image", name: "heroPoster", label: "Home — immagine hero (vuoto = foto predefinita)" },
+          { type: "image", name: "heroPoster", label: "Home — copertina video hero" },
           { type: "image", name: "homeStory", label: "Home — foto della serata" },
           { type: "image", name: "experienceBody", label: "L'esperienza — corpo in movimento" },
           { type: "image", name: "experienceMusic", label: "L'esperienza — la console / DJ" },
