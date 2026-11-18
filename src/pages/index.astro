@@ -11,9 +11,14 @@ const home = homeEntry.data;
 ---
 <Base title="Ecstatic Dance Bologna | Danza Consapevole" description="Unisciti a Ecstatic Dance a Bologna, un sabato sera al mese. Scalzə, senza giudizio e senza alcol, lasciati guidare da un viaggio musicale nel movimento libero. Vieni come sei." ogDescription="Unisciti a Ecstatic Dance a Bologna, un sabato sera al mese. Vieni come sei.">
 <div class="hero">
-    <video class="hero-vid" autoplay muted loop playsinline poster={images.data.heroPoster ? images.data.heroPoster : "/images/hero-poster.jpg"}>
-      <source src="/videos/hero.mp4" type="video/mp4">
-    </video>
+    {images.data.heroPoster ? (
+      <img class="hero-img" src={images.data.heroPoster} alt="" fetchpriority="high" decoding="async">
+    ) : (
+      <picture>
+        <source type="image/webp" srcset="/images/hero-sm.webp 1200w, /images/hero.webp 2400w" sizes="100vw">
+        <img class="hero-img" src="/images/hero.jpg" srcset="/images/hero-sm.jpg 1200w, /images/hero.jpg 2400w" sizes="100vw" alt="" fetchpriority="high" decoding="async" width="2400" height="1600">
+      </picture>
+    )}
     <div class="hero-scrim"></div>
     <div class="hero-inner">
       <p class="eyebrow" data-it={home.hero.eyebrowIt} data-en={home.hero.eyebrowEn}>{home.hero.eyebrowIt}</p>
